@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dr. Modali Learning Labs – Bespoke NCLEX Training: Day 0 Post-Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-gradient-start: #020617;
+      --bg-gradient-end: #020617;
+      --accent: #7ee7ff;
+      --accent-soft: #4f46e5;
+      --accent-soft-hover: #4338ca;
+      --card-bg: #020617;
+      --card-inner: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #f97373;
+      --success: #34d399;
+      --border-subtle: #1f2933;
+      --button-radius: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-main);
+      color: var(--text-main);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 1100px;
+      min-height: 640px;
+      border-radius: 32px;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+      box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(148, 163, 184, 0.12);
+      padding: 32px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .app-shell::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.09), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.08), transparent 60%);
+      pointer-events: none;
+    }
+
+    .app-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title {
+      letter-spacing: 0.16em;
+      font-weight: 800;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0, #22c55e);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
+    }
+
+    .app-main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      border-radius: 24px;
+      background: radial-gradient(circle at top left, #020617 0, #020617 60%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background:
+        radial-gradient(circle at top center, rgba(56, 189, 248, 0.12), transparent 60%),
+        radial-gradient(circle at bottom, rgba(129, 140, 248, 0.10), transparent 70%);
+      opacity: 0.7;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title-xl {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .title-md {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      color: #cbd5f5;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-main);
+    }
+
+    .btn-primary {
+      padding: 12px 26px;
+      border-radius: var(--button-radius);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #6366f1, #22c55e);
+      color: #f9fafb;
+      box-shadow:
+        0 16px 40px rgba(79, 70, 229, 0.55),
+        0 0 0 1px rgba(56, 189, 248, 0.4);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.16s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 20px 50px rgba(79, 70, 229, 0.65),
+        0 0 0 1px rgba(56, 189, 248, 0.6);
+    }
+
+    .btn-secondary {
+      padding: 12px 22px;
+      border-radius: var(--button-radius);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease,
+        transform 0.12s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .input-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .text-input {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 10px 16px;
+      min-width: 220px;
+      color: var(--text-main);
+      font-size: 14px;
+      outline: none;
+      box-shadow: 0 0 0 1px transparent;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .text-input::placeholder {
+      color: #6b7280;
+    }
+
+    .text-input:focus {
+      border-color: rgba(56, 189, 248, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.8);
+    }
+
+    .how-to {
+      margin-top: 22px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 16px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .how-to h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #cbd5f5;
+      margin-bottom: 8px;
+    }
+
+    .how-to ul {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
+    .how-to li {
+      margin-bottom: 4px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* QUIZ MODE */
+
+    .quiz-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .quiz-title {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .quiz-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .timer-pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .timer-main {
+      font-size: 16px;
+      color: #f9fafb;
+      font-weight: 600;
+    }
+
+    .question-container {
+      margin-top: 8px;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .question-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .question-number {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .question-category {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a5b4fc;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .question-stem {
+      margin-top: 4px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .answers {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .answer-option {
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 10px 12px;
+      font-size: 14px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: border-color 0.14s ease, background 0.14s ease, box-shadow 0.14s ease,
+        transform 0.08s ease;
+    }
+
+    .answer-option:hover {
+      border-color: rgba(59, 130, 246, 0.9);
+      background: rgba(17, 24, 39, 1);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .answer-option input {
+      margin-top: 3px;
+    }
+
+    .option-label {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .option-text {
+      color: #cbd5f5;
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .question-progress {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .btn-nav {
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-nav:hover {
+      background: rgba(30, 64, 175, 0.85);
+      border-color: rgba(191, 219, 254, 0.9);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #22c55e, #a855f7);
+      border-color: transparent;
+      color: #f9fafb;
+      font-weight: 600;
+    }
+
+    .btn-submit:hover {
+      filter: brightness(1.05);
+    }
+
+    /* RESULTS */
+
+    .results-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 18px;
+    }
+
+    .results-card {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.98), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .results-card h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #e5e7eb;
+      margin-bottom: 8px;
+    }
+
+    .score-main {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .score-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+
+    th,
+    td {
+      padding: 4px 4px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: 600;
+      color: #cbd5f5;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    tr:not(:last-child) td {
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.6);
+    }
+
+    .tag-good {
+      color: var(--success);
+    }
+
+    .tag-weak {
+      color: var(--danger);
+    }
+
+    .results-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .muted-note {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .app-shell {
+        padding: 18px 16px;
+      }
+      .card {
+        padding: 20px 16px 16px;
+      }
+      .title-xl {
+        font-size: 24px;
+      }
+      .results-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-block">
+        <div class="brand-title">DR. MODALI LEARNING LABS</div>
+        <div class="brand-subtitle">Bespoke NCLEX Training · Day 0 Post-Test</div>
+      </div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Immersive Clinical Reasoning Engine</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="card">
+        <!-- START SCREEN -->
+        <div class="card-inner" id="start-screen">
+          <div class="title-xl">Bespoke NCLEX Training</div>
+          <div class="title-md">Day 0 Post-Test · 100 Questions</div>
+          <p class="subtitle">
+            This is a timed calibration exam designed to measure how your brain currently plays the
+            NCLEX game. Answer as you would on test day.
+          </p>
+
+          <div class="input-row">
+            <input
+              id="student-name"
+              class="text-input"
+              type="text"
+              placeholder="Enter your full name"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="cta-row">
+            <button class="btn-primary" id="begin-btn">
+              <span>Begin Mission</span>
+            </button>
+            <button class="btn-secondary" id="how-btn">
+              <span>How to Play</span>
+            </button>
+          </div>
+
+          <section class="how-to hidden" id="how-panel">
+            <h3>Mission Parameters</h3>
+            <ul>
+              <li>100 NCLEX-style questions, single best answer (A–D).</li>
+              <li>Total exam time: <strong>120 minutes</strong> (approx. 1.2 minutes per question).</li>
+              <li>You may move forward and back. Unanswered questions count as incorrect.</li>
+              <li>When time expires or you submit, your answers lock and your score is calculated.</li>
+              <li>At the end you’ll see your score, category profile, and a button to print/save as PDF.</li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div class="card-inner hidden" id="quiz-screen">
+          <div class="quiz-header-row">
+            <div class="quiz-meta">
+              <div class="quiz-title">Day 0 Post-Test</div>
+              <div class="quiz-subtitle" id="quiz-student-name">Candidate: –</div>
+            </div>
+            <div class="timer-pill">
+              <span>Time Left</span>
+              <span class="timer-main" id="timer-display">120:00</span>
+            </div>
+          </div>
+
+          <section class="question-container">
+            <div class="question-top-row">
+              <div class="question-number" id="question-number">Question 1 of 100</div>
+              <div class="question-category" id="question-category">Category</div>
+            </div>
+            <div class="question-stem" id="question-stem">
+              <!-- question text -->
+            </div>
+            <div class="answers" id="answers-container">
+              <!-- options -->
+            </div>
+            <div class="nav-row">
+              <div class="question-progress" id="question-progress">
+                Answered 0 / 100
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-nav" id="prev-btn">&larr; Previous</button>
+                <button class="btn-nav" id="next-btn">Next &rarr;</button>
+                <button class="btn-nav btn-submit" id="submit-btn">Submit Exam</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div class="card-inner hidden" id="results-screen">
+          <div class="quiz-header-row">
+            <div class="quiz-meta">
+              <div class="quiz-title">Mission Debrief</div>
+              <div class="quiz-subtitle" id="result-student-name"></div>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <div class="results-card">
+              <h3>Overall Score</h3>
+              <div class="score-main" id="score-main">0 / 100</div>
+              <div class="score-sub" id="score-percent">0%</div>
+              <p class="muted-note" id="time-used-note"></p>
+            </div>
+
+            <div class="results-card">
+              <h3>Category Profile</h3>
+              <table id="category-table">
+                <thead>
+                  <tr>
+                    <th>Domain</th>
+                    <th>Correct</th>
+                    <th>Total</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="results-actions">
+            <button class="btn-secondary" id="review-btn">Review Questions (offline)</button>
+            <button class="btn-primary" id="print-btn">Print / Save as PDF</button>
+          </div>
+
+          <p class="muted-note">
+            This score is not a prediction of your NCLEX result. It is a baseline to tune how you read
+            stems, identify danger patterns, and play the U.S. test logic game. Your Day 1–Day 14 schedule
+            will be shaped around what you did here.
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // ----------------- CONFIG -----------------
+    const TOTAL_QUESTIONS = 100;
+    const TOTAL_TIME_MINUTES = 120; // adjust if you want a different total time
+    const TOTAL_TIME_SECONDS = TOTAL_TIME_MINUTES * 60;
+
+    // ----------------- QUESTION BANK -----------------
+    // Fields:
+    // id, category, stem, options [A-D], correctIndex (0-3), rationale
+    const questions = [
+{
+        id: 1,
+        category: "PRIORITY",
+        stem:
+          "Four clients are waiting to be seen. Which client should the nurse assess FIRST?",
+        options: [
+          "Client with COPD who reports chronic productive cough.",
+          "Client 2 days post–hip replacement reporting pain 6/10 with movement.",
+          "Client 4 hours post–cholecystectomy reporting sudden shortness of breath.",
+          "Client with type 2 diabetes whose fasting blood glucose is 190 mg/dL."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Sudden shortness of breath in a recent postoperative client suggests pulmonary embolism or another acute respiratory event and is life-threatening. Chronic COPD cough and postop pain 6/10 are expected and can be addressed next. A BG of 190 mg/dL is elevated but not immediately life-threatening."
+      },
+      {
+        id: 2,
+        category: "PRIORITY",
+        stem:
+          "The nurse is caring for four clients on a medical-surgical unit. Which finding is MOST concerning?",
+        options: [
+          "Client with pneumonia and temperature of 38.2°C (100.8°F).",
+          "Client with heart failure and new onset confusion and restlessness.",
+          "Client with rheumatoid arthritis reporting joint stiffness in the morning.",
+          "Client with chronic kidney disease and hemoglobin of 9 g/dL."
+        ],
+        correctIndex: 1,
+        rationale:
+          "New confusion and restlessness in a client with heart failure can indicate hypoxia or decreased cerebral perfusion and requires immediate assessment. Low-grade fever with pneumonia, morning stiffness in RA, and mild anemia in CKD are expected or chronic findings."
+      },
+      {
+        id: 3,
+        category: "PRIORITY",
+        stem:
+          "The nurse receives report on four clients. Which client should be seen FIRST?",
+        options: [
+          "Client 1 day post-thyroidectomy complaining of sore throat when swallowing.",
+          "Client with asthma who received albuterol 15 minutes ago and now has quiet breath sounds.",
+          "Client with ulcerative colitis having 4 loose stools today.",
+          "Client with chronic low back pain requesting scheduled analgesia."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Quiet or 'silent' lungs after bronchodilator treatment can indicate worsening bronchoconstriction and impending respiratory failure. Sore throat after thyroidectomy is expected, loose stools in UC are common, and chronic back pain with scheduled meds is non-emergent."
+      },
+      {
+        id: 4,
+        category: "PRIORITY",
+        stem:
+          "The nurse is caring for a client 6 hours after abdominal surgery. Which assessment finding requires IMMEDIATE intervention?",
+        options: [
+          "Urine output of 35 mL/hour for the past 2 hours.",
+          "Heart rate of 120/min and blood pressure of 84/50 mm Hg.",
+          "Pain rated 8/10 despite IV opioids.",
+          "Serosanguineous drainage on the surgical dressing."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Tachycardia with hypotension suggests possible hemorrhage or shock and is the highest priority. Slightly low urine output should be monitored but is less emergent. Uncontrolled pain is important but does not outrank hemodynamic instability. Serosanguineous drainage is expected early postop."
+      },
+      {
+        id: 5,
+        category: "PRIORITY",
+        stem:
+          "The nurse is triaging clients in the emergency department. Which client is the HIGHEST priority?",
+        options: [
+          "Client with asthma using accessory muscles and unable to speak more than one word at a time.",
+          "Client with ankle sprain who cannot bear weight.",
+          "Client with migraine reporting photophobia and throbbing headache.",
+          "Client with cystitis reporting dysuria and urinary frequency."
+        ],
+        correctIndex: 0,
+        rationale:
+          "A client with asthma using accessory muscles and unable to speak is in severe respiratory distress and at risk for respiratory failure. The other conditions are painful but not immediately life-threatening."
+      },
+      {
+        id: 6,
+        category: "PRIORITY",
+        stem:
+          "The nurse is caring for a post-tonsillectomy child. Which observation requires IMMEDIATE intervention?",
+        options: [
+          "The child is drowsy and sleeping between assessments.",
+          "The child frequently swallows and clears the throat.",
+          "The child refuses oral fluids due to throat pain.",
+          "The child has a low-grade temperature of 37.8°C (100°F)."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Frequent swallowing and throat clearing may indicate bleeding into the throat and risk for airway obstruction. Drowsiness, mild fever, and reluctance to drink are common but not as dangerous."
+      },
+      {
+        id: 7,
+        category: "PRIORITY",
+        stem:
+          "The nurse receives morning lab results. Which result should be addressed FIRST?",
+        options: [
+          "Serum potassium 2.8 mEq/L (2.8 mmol/L).",
+          "Serum sodium 130 mEq/L (130 mmol/L).",
+          "White blood cell count 14,000/mm³.",
+          "Hemoglobin 9.5 g/dL."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Potassium 2.8 is significant hypokalemia and puts the client at risk for life-threatening dysrhythmias. The other values are abnormal but not as immediately dangerous."
+      },
+      {
+        id: 8,
+        category: "PRIORITY",
+        stem:
+          "On a psychiatric unit, which client should the nurse see FIRST?",
+        options: [
+          "Client who states, 'I have no reason to live anymore.'",
+          "Client pacing the hallway and clenching fists.",
+          "Client who refuses breakfast and says, 'I'm just not hungry.'",
+          "Client who spends most of the day in bed and avoids groups."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Any direct verbalization about not wanting to live indicates potential suicide risk and requires immediate suicide assessment (plan, means, intent). Agitation and withdrawal are important but come after direct suicidal statements."
+      },
+      {
+        id: 9,
+        category: "PRIORITY",
+        stem:
+          "The nurse is caring for a client with sepsis receiving IV antibiotics. Which assessment is MOST important to report to the provider?",
+        options: [
+          "Urine output decreased from 50 mL/hr to 20 mL/hr.",
+          "Temperature decreased from 39°C (102.2°F) to 37.5°C (99.5°F).",
+          "White blood cell count decreased from 20,000 to 15,000/mm³.",
+          "Client reports fatigue and generalized weakness."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Falling urine output in sepsis suggests worsening perfusion and possible septic shock; this is an early indicator of organ dysfunction. The other findings show improvement or expected fatigue."
+      },
+      {
+        id: 10,
+        category: "PRIORITY",
+        stem:
+          "The nurse finds smoke in a client’s room from a small electrical fire in the wall socket. Which action should the nurse take FIRST?",
+        options: [
+          "Pull the fire alarm.",
+          "Rescue the client from the room.",
+          "Close all doors on the unit.",
+          "Attempt to extinguish the fire with a fire extinguisher."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Use RACE: Rescue, Alarm, Contain, Extinguish. The client must be removed from immediate danger first, then the alarm pulled, doors closed, and fire addressed."
+      },
+      {
+        id: 11,
+        category: "PRIORITY",
+        stem:
+          "The nurse is planning care. Which task is appropriate to DELEGATE to an experienced unlicensed assistive personnel (UAP)?",
+        options: [
+          "Obtain the first set of vital signs after a client returns from surgery.",
+          "Teach a client how to use an incentive spirometer.",
+          "Assist a stable client with Parkinson disease with bathing and dressing.",
+          "Evaluate a client’s pain relief after an analgesic is administered."
+        ],
+        correctIndex: 2,
+        rationale:
+          "UAPs can perform basic activities of daily living for stable clients. Initial postoperative vital signs, teaching, and evaluation of pain relief require assessment and clinical judgment and must be done by the nurse."
+      },
+      {
+        id: 12,
+        category: "PRIORITY",
+        stem:
+          "Which client is appropriate for the nurse to assign to a licensed practical/vocational nurse (LPN/LVN)?",
+        options: [
+          "Client with new onset chest pain awaiting troponin results.",
+          "Client receiving a blood transfusion who is 10 minutes into the infusion.",
+          "Client with stable chronic obstructive pulmonary disease requiring scheduled nebulizer treatment.",
+          "Client admitted with suspected stroke requiring frequent neurologic checks."
+        ],
+        correctIndex: 2,
+        rationale:
+          "The LPN can care for stable clients with predictable outcomes, such as stable COPD requiring routine treatments. New chest pain, early phases of blood transfusion, and acute stroke require RN assessment and close monitoring."
+      },
+      {
+        id: 13,
+        category: "PRIORITY",
+        stem:
+          "The UAP tells the nurse, 'Mr. Jones looks really pale and sweaty.' What is the nurse’s BEST response?",
+        options: [
+          "‘Please recheck his blood pressure and heart rate now.’",
+          "‘Thank you, I’ll go assess him right away.’",
+          "‘Document what you observed in the chart.’",
+          "‘He was fine earlier, just let me know if anything else changes.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "The nurse must immediately assess the client after this concerning observation. Pale and diaphoretic may indicate shock or cardiac issues. Delegating vitals before assessment or dismissing the concern is unsafe."
+      },
+      {
+        id: 14,
+        category: "PRIORITY",
+        stem:
+          "At 0200, which client should the nurse check FIRST?",
+        options: [
+          "Client with pneumonia whose oxygen saturation decreased from 96% to 92% on 2 L nasal cannula.",
+          "Client postoperative day 1 following hip arthroplasty requesting pain medication.",
+          "Client 6 hours after receiving IV morphine who is difficult to arouse with respiratory rate 8/min.",
+          "Client with type 2 diabetes who requests assistance with a snack."
+        ],
+        correctIndex: 2,
+        rationale:
+          "A client who is difficult to arouse with RR 8/min is at risk for respiratory arrest from opioid-induced respiratory depression and must be assessed immediately. The other issues are important but less urgent."
+      },
+      {
+        id: 15,
+        category: "PRIORITY",
+        stem:
+          "Which incoming client is MOST appropriate to assign to a new graduate RN on a medical-surgical unit?",
+        options: [
+          "Client with diabetic ketoacidosis requiring IV insulin titration.",
+          "Client 2 days post-appendectomy requiring dressing change and ambulation.",
+          "Client with active gastrointestinal bleeding and blood pressure 86/52 mm Hg.",
+          "Client with acute stroke symptoms that began 30 minutes ago."
+        ],
+        correctIndex: 1,
+        rationale:
+          "The safest assignment for a new graduate is a relatively stable postoperative client with predictable needs. DKA, active GI bleeding, and acute stroke require advanced assessment and rapid critical decision-making."
+      },
+
+      /* LABS / MED-SURG PHYSIO (16–30) */
+      {
+        id: 16,
+        category: "LABS",
+        stem:
+          "A client is receiving IV unfractionated heparin for a deep vein thrombosis. Which lab value requires the nurse’s IMMEDIATE action?",
+        options: [
+          "Activated partial thromboplastin time (aPTT) 80 seconds (control 30 seconds).",
+          "Platelet count 45,000/mm³.",
+          "Hemoglobin 11 g/dL.",
+          "International normalized ratio (INR) 1.1."
+        ],
+        correctIndex: 1,
+        rationale:
+          "A platelet count of 45,000 suggests heparin-induced thrombocytopenia and high bleeding risk; the infusion should be stopped and the provider notified. aPTT of 80 in this context may be therapeutic. Mild anemia and normal INR are less critical."
+      },
+      {
+        id: 17,
+        category: "LABS",
+        stem:
+          "The nurse reviews morning labs for four clients. Which value is MOST concerning?",
+        options: [
+          "Client with pancreatitis and serum amylase of 210 U/L (elevated).",
+          "Client with acute kidney injury and serum creatinine of 3.0 mg/dL.",
+          "Client on total parenteral nutrition with blood glucose of 240 mg/dL.",
+          "Client taking digoxin with serum potassium of 3.0 mEq/L."
+        ],
+        correctIndex: 3,
+        rationale:
+          "Hypokalemia in a client taking digoxin increases the risk of digoxin toxicity and dysrhythmias. Elevated amylase and creatinine are expected in these conditions. BG 240 requires management but is less immediately dangerous than arrhythmia risk."
+      },
+      {
+        id: 18,
+        category: "LABS",
+        stem:
+          "Which lab result would prompt the nurse to HOLD the scheduled dose of furosemide?",
+        options: [
+          "Potassium 2.9 mEq/L.",
+          "Sodium 135 mEq/L.",
+          "Blood urea nitrogen (BUN) 22 mg/dL.",
+          "Creatinine 1.0 mg/dL."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Furosemide can worsen hypokalemia. A potassium level of 2.9 is low, so the medication should be held and the provider notified. The other values are within or near normal limits."
+      },
+      {
+        id: 19,
+        category: "LABS",
+        stem:
+          "The nurse is reviewing arterial blood gases (ABGs) for a client: pH 7.30, PaCO₂ 50 mm Hg, HCO₃⁻ 24 mEq/L. How should the nurse interpret this?",
+        options: [
+          "Metabolic acidosis.",
+          "Respiratory acidosis.",
+          "Metabolic alkalosis.",
+          "Respiratory alkalosis."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Low pH with elevated PaCO₂ and normal bicarbonate indicates respiratory acidosis. Metabolic acidosis would show low pH and low HCO₃⁻. Alkalosis would have pH >7.45."
+      },
+      {
+        id: 20,
+        category: "LABS",
+        stem:
+          "A client with cirrhosis has ascites and peripheral edema. Which lab finding is MOST consistent with this condition?",
+        options: [
+          "Serum albumin 2.0 g/dL.",
+          "Serum ammonia 20 mcg/dL (normal).",
+          "Serum calcium 10.0 mg/dL.",
+          "Serum potassium 4.3 mEq/L."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Low albumin contributes to decreased oncotic pressure, allowing fluid to leak into the peritoneal cavity and tissues. The other values are normal and not directly related to ascites."
+      },
+      {
+        id: 21,
+        category: "LABS",
+        stem:
+          "The nurse reviews a client’s fasting lipid panel. Which result should be the priority to address in cardiovascular risk reduction teaching?",
+        options: [
+          "High-density lipoprotein (HDL) 65 mg/dL.",
+          "Low-density lipoprotein (LDL) 170 mg/dL.",
+          "Triglycerides 130 mg/dL.",
+          "Total cholesterol 180 mg/dL."
+        ],
+        correctIndex: 1,
+        rationale:
+          "LDL 170 is significantly elevated and strongly associated with atherosclerosis. HDL 65 is protective, triglycerides 130 and total cholesterol 180 are close to normal."
+      },
+      {
+        id: 22,
+        category: "LABS",
+        stem:
+          "Which assessment should the nurse perform PRIOR to administering IV potassium chloride (KCl)?",
+        options: [
+          "Check the client’s most recent hemoglobin.",
+          "Check the client’s urine output and kidney function.",
+          "Measure the client’s daily weight.",
+          "Assess the client’s pupil reaction to light."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Potassium is excreted by the kidneys. Adequate urine output and kidney function must be confirmed before giving KCl to avoid life-threatening hyperkalemia. Hemoglobin and weight are less directly related, and pupil reaction is unrelated."
+      },
+      {
+        id: 23,
+        category: "LABS",
+        stem:
+          "A client with type 1 diabetes is found diaphoretic and shaky, and states, 'I feel strange.' What is the PRIORITY nursing action?",
+        options: [
+          "Check the capillary blood glucose level.",
+          "Notify the health care provider immediately.",
+          "Administer the scheduled long-acting insulin.",
+          "Encourage the client to ambulate in the hallway."
+        ],
+        correctIndex: 0,
+        rationale:
+          "These are symptoms of possible hypoglycemia. The first step is to check the blood glucose to confirm, then treat with fast-acting carbohydrate if low. Calling the provider and giving more insulin would delay or worsen treatment."
+      },
+      {
+        id: 24,
+        category: "LABS",
+        stem:
+          "A client receiving chemotherapy has a white blood cell count of 1,200/mm³. Which nursing action has the HIGHEST priority?",
+        options: [
+          "Encourage high-protein, high-calorie foods.",
+          "Place the client on neutropenic precautions.",
+          "Monitor for signs of bleeding and bruising.",
+          "Encourage the client to increase fluid intake."
+        ],
+        correctIndex: 1,
+        rationale:
+          "A WBC count of 1,200 indicates severe neutropenia and high risk for infection. Protective (neutropenic) precautions are the priority to reduce infection risk. Nutrition, bleeding, and fluids are important but secondary."
+      },
+      {
+        id: 25,
+        category: "LABS",
+        stem:
+          "The nurse reviews lab results for a client on warfarin therapy. Which result indicates the medication is in the therapeutic range for atrial fibrillation?",
+        options: [
+          "INR 1.0.",
+          "INR 2.5.",
+          "INR 4.8.",
+          "INR 6.0."
+        ],
+        correctIndex: 1,
+        rationale:
+          "For most indications such as atrial fibrillation, the therapeutic INR is 2–3. Values near 1.0 are not therapeutic, and 4.8–6.0 are too high and increase bleeding risk."
+      },
+      {
+        id: 26,
+        category: "LABS",
+        stem:
+          "A client with chronic kidney disease has a serum potassium of 6.2 mEq/L. Which prescription should the nurse clarify BEFORE implementing?",
+        options: [
+          "Administer sodium polystyrene sulfonate as ordered.",
+          "Give spironolactone 25 mg orally daily.",
+          "Place the client on a cardiac monitor.",
+          "Obtain a 12-lead electrocardiogram (ECG)."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Spironolactone is a potassium-sparing diuretic and would further increase potassium levels. Sodium polystyrene helps remove potassium. Cardiac monitoring and ECG are appropriate for hyperkalemia."
+      },
+      {
+        id: 27,
+        category: "LABS",
+        stem:
+          "The nurse is caring for a client with suspected infection. Which lab value would BEST support the presence of an acute bacterial infection?",
+        options: [
+          "Elevated eosinophil count.",
+          "Neutrophil 'left shift' with increased bands.",
+          "Decreased lymphocyte count.",
+          "Platelet count 500,000/mm³."
+        ],
+        correctIndex: 1,
+        rationale:
+          "A left shift with increased immature neutrophils (bands) is characteristic of an acute bacterial infection. Eosinophils increase with allergies and parasites; lymphocytes are more associated with viral infections. Thrombocytosis is unrelated."
+      },
+      {
+        id: 28,
+        category: "LABS",
+        stem:
+          "A client with pancreatitis develops respiratory distress. The nurse suspects acute respiratory distress syndrome (ARDS). Which ABG pattern is MOST consistent with ARDS?",
+        options: [
+          "pH 7.50, PaCO₂ 30 mm Hg, PaO₂ 90 mm Hg.",
+          "pH 7.32, PaCO₂ 60 mm Hg, PaO₂ 80 mm Hg.",
+          "pH 7.48, PaCO₂ 28 mm Hg, PaO₂ 50 mm Hg on high-flow oxygen.",
+          "pH 7.40, PaCO₂ 40 mm Hg, PaO₂ 80 mm Hg."
+        ],
+        correctIndex: 2,
+        rationale:
+          "ARDS often presents with refractory hypoxemia (low PaO₂ despite high oxygen) and respiratory alkalosis early. Option C shows PaO₂ 50 on high O₂ with alkalosis. The other options do not show severe hypoxemia on high oxygen."
+      },
+      {
+        id: 29,
+        category: "LABS",
+        stem:
+          "The nurse reviews labs for a client with anemia. Which result is MOST consistent with iron-deficiency anemia?",
+        options: [
+          "Macrocytic red blood cells and elevated MCV.",
+          "Microcytic, hypochromic red blood cells.",
+          "Normal MCV and elevated reticulocyte count.",
+          "Increased hemoglobin and hematocrit."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Iron-deficiency anemia typically presents with microcytic (small), hypochromic (pale) RBCs. Macrocytosis is more typical of B₁₂/folate deficiency. Elevated reticulocytes can indicate recovery. Increased H/H is opposite of anemia."
+      },
+      {
+        id: 30,
+        category: "LABS",
+        stem:
+          "A client with suspected myocardial infarction has an elevated troponin level. Which action is PRIORITY?",
+        options: [
+          "Schedule the client for an echocardiogram.",
+          "Place the client on continuous cardiac monitoring.",
+          "Encourage early ambulation to prevent clots.",
+          "Obtain a 24-hour urine collection."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Elevated troponin indicates myocardial injury. Continuous cardiac monitoring is essential to detect life-threatening dysrhythmias. Echocardiogram and other tests may be done later; early ambulation is not appropriate in acute MI."
+      },
+
+      /* PHARMACOLOGY (31–50) */
+      {
+        id: 31,
+        category: "PHARM",
+        stem:
+          "Which instruction should the nurse include when teaching a client about sublingual nitroglycerin for angina?",
+        options: [
+          "‘Swallow the tablet with a full glass of water.’",
+          "‘Store the tablets in a dark glass bottle and replace them every 6 months.’",
+          "‘Take one tablet every 30 minutes, up to 3 tablets, for chest pain.’",
+          "‘Headache is an emergency; stop the drug if this occurs.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Nitroglycerin should be stored in a dark glass bottle and replaced regularly to maintain potency. Tablets are placed under the tongue and not swallowed. For chest pain, they are taken every 5 minutes (not 30), up to 3 doses. Headache is an expected side effect, not a reason to stop the drug."
+      },
+      {
+        id: 32,
+        category: "PHARM",
+        stem:
+          "The nurse is reviewing medications for a client with peptic ulcer disease. Which medication should the nurse question?",
+        options: [
+          "Omeprazole.",
+          "Sucralfate.",
+          "Ibuprofen.",
+          "Aluminum hydroxide."
+        ],
+        correctIndex: 2,
+        rationale:
+          "NSAIDs such as ibuprofen can worsen gastric mucosal injury and should generally be avoided in peptic ulcer disease. Omeprazole, sucralfate, and antacids help protect the stomach."
+      },
+      {
+        id: 33,
+        category: "PHARM",
+        stem:
+          "A client on digoxin therapy reports nausea and seeing yellow halos around lights. What is the nurse’s PRIORITY action?",
+        options: [
+          "Administer the scheduled digoxin dose with food.",
+          "Check the apical heart rate and notify the provider.",
+          "Encourage the client to increase fluid intake.",
+          "Reassure the client that these are expected side effects."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Nausea and visual changes are signs of digoxin toxicity. The nurse should assess the apical pulse and hold the medication, then notify the provider. Giving the dose, reassuring, or just increasing fluids is unsafe."
+      },
+      {
+        id: 34,
+        category: "PHARM",
+        stem:
+          "Which instruction is MOST important when teaching a client about warfarin therapy?",
+        options: [
+          "‘Avoid all foods that contain vitamin K.’",
+          "‘Use a soft toothbrush and electric razor.’",
+          "‘Take the medication only when you feel palpitations.’",
+          "‘Stop the medication if you notice any bruising.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "The client should use safety measures to reduce bleeding risk, such as a soft toothbrush and electric razor. Vitamin K–containing foods do not need to be avoided but should be kept consistent. Warfarin is taken daily as prescribed and not stopped abruptly due to minor bruising."
+      },
+      {
+        id: 35,
+        category: "PHARM",
+        stem:
+          "The nurse is teaching about albuterol inhaler use in asthma. Which statement indicates a need for further teaching?",
+        options: [
+          "‘I will use the inhaler before exercise if my provider recommends it.’",
+          "‘If I need this inhaler more often than usual, I should tell my provider.’",
+          "‘I should rinse my mouth after each use of this inhaler.’",
+          "‘This inhaler is my rescue medication when I have sudden wheezing.’"
+        ],
+        correctIndex: 2,
+        rationale:
+          "Rinsing the mouth is necessary after inhaled corticosteroids to prevent thrush, not after albuterol. The other statements are correct: albuterol can be used before exercise, overuse should be reported, and it is a rescue inhaler."
+      },
+      {
+ id: 36,
+        category: "PHARM",
+        stem:
+          "A client taking lisinopril reports a persistent dry cough. What is the nurse’s BEST response?",
+        options: [
+          "‘This is a common side effect; talk with your provider about a different medication.’",
+          "‘Stop taking the medication immediately if the cough bothers you.’",
+          "‘This cough means your blood pressure is getting worse.’",
+          "‘Increase your fluid intake to decrease the cough.’"
+        ],
+        correctIndex: 0,
+        rationale:
+          "A dry cough is a common ACE-inhibitor side effect. The provider may switch to an ARB. The client should not stop the drug abruptly without guidance, and the cough is not a sign of worsening blood pressure."
+      },
+      {
+        id: 37,
+        category: "PHARM",
+        stem:
+          "Which client statement about levothyroxine indicates a correct understanding of the medication?",
+        options: [
+          "‘I will take this medication every morning on an empty stomach.’",
+          "‘I can stop taking it once I feel less tired.’",
+          "‘I should take it with calcium and iron supplements to improve absorption.’",
+          "‘This medication will make my heart rate slower.’"
+        ],
+        correctIndex: 0,
+        rationale:
+          "Levothyroxine is best absorbed in the morning on an empty stomach. It is usually lifelong therapy. Calcium and iron interfere with absorption and should be separated. It can increase, not decrease, heart rate if dosed too high."
+      },
+      {
+        id: 38,
+        category: "PHARM",
+        stem:
+          "The nurse is preparing to administer NPH insulin at 0800. When should the nurse expect the GREATEST risk for hypoglycemia?",
+        options: [
+          "Immediately after injection.",
+          "1–2 hours after injection.",
+          "4–12 hours after injection.",
+          "24 hours after injection."
+        ],
+        correctIndex: 2,
+        rationale:
+          "NPH insulin has a peak effect about 4–12 hours after administration, when hypoglycemia risk is greatest. It does not peak immediately, and its duration is less than 24 hours."
+      },
+      {
+        id: 39,
+        category: "PHARM",
+        stem:
+          "Which medication should the nurse question for a pregnant client in the first trimester?",
+        options: [
+          "Prenatal vitamins with folic acid.",
+          "Acetaminophen for mild pain.",
+          "Isotretinoin for severe acne.",
+          "Iron supplements for anemia."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Isotretinoin is highly teratogenic and contraindicated in pregnancy. Prenatal vitamins, acetaminophen, and iron are commonly used and generally considered safe when prescribed."
+      },
+      {
+        id: 40,
+        category: "PHARM",
+        stem:
+          "A client is receiving vancomycin IV. During the infusion, the client develops flushing of the face, neck, and upper chest. What is the nurse’s PRIORITY action?",
+        options: [
+          "Stop the infusion and call a rapid response.",
+          "Slow the infusion rate and monitor the client.",
+          "Administer epinephrine immediately.",
+          "Document the finding as an expected side effect."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Flushing and redness with vancomycin often indicate Red Man Syndrome, a rate-related reaction. The nurse should slow the infusion and monitor the client. Sudden airway compromise would require stopping the infusion and emergency treatment."
+      },
+      {
+        id: 41,
+        category: "PHARM",
+        stem:
+          "Which teaching point is MOST important for a client starting sertraline for major depressive disorder?",
+        options: [
+          "‘You will feel full effects within 24–48 hours.’",
+          "‘Do not stop this medication abruptly; tapering is necessary.’",
+          "‘This medication is habit-forming and highly addictive.’",
+          "‘If you miss a dose, double up at the next dose.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "SSRIs such as sertraline should not be stopped abruptly due to risk of withdrawal symptoms; they require gradual tapering. Full therapeutic effects take several weeks, they are not considered addictive, and doses should not be doubled."
+      },
+      {
+        id: 42,
+        category: "PHARM",
+        stem:
+          "The nurse is reviewing discharge instructions for a client prescribed nitrofurantoin for a urinary tract infection. Which statement indicates a need for further teaching?",
+        options: [
+          "‘I will take the medication with food to decrease stomach upset.’",
+          "‘I might notice my urine turning brownish; that is expected.’",
+          "‘If I feel better after 2 days, I can stop the medication.’",
+          "‘I will finish all of the medication even if I feel well.’"
+        ],
+        correctIndex: 2,
+        rationale:
+          "Antibiotics should be taken for the full prescribed course to prevent resistance and recurrence. Stopping when symptoms improve is incorrect. Taking with food and urine discoloration are expected; finishing the course is correct."
+      },
+      {
+        id: 43,
+        category: "PHARM",
+        stem:
+          "The nurse is caring for a client receiving morphine IV for postoperative pain. Which finding requires IMMEDIATE intervention?",
+        options: [
+          "Pain decreases from 8/10 to 3/10.",
+          "The client is drowsy but easily aroused.",
+          "Respiratory rate decreases from 18 to 10/min and is shallow.",
+          "The client reports nausea and mild pruritus."
+        ],
+        correctIndex: 2,
+        rationale:
+          "RR 10/min with shallow respirations suggests opioid-induced respiratory depression and requires immediate action. Decreased pain and mild drowsiness are expected. Nausea and itching are common side effects."
+      },
+      {
+        id: 44,
+        category: "PHARM",
+        stem:
+          "Which OTC medication should the nurse instruct a client taking warfarin to AVOID unless approved by the provider?",
+        options: [
+          "Acetaminophen.",
+          "Ibuprofen.",
+          "Calcium carbonate.",
+          "Docusate sodium."
+        ],
+        correctIndex: 1,
+        rationale:
+          "NSAIDs such as ibuprofen increase bleeding risk when combined with warfarin. Acetaminophen is generally preferred for pain, and calcium carbonate and stool softeners do not significantly increase bleeding risk."
+      },
+      {
+  id: 45,
+        category: "PHARM",
+        stem:
+          "The nurse is teaching a client about newly prescribed phenytoin. Which statement requires further teaching?",
+        options: [
+          "‘I will avoid drinking alcohol while on this medication.’",
+          "‘I should not stop this medication suddenly.’",
+          "‘I will use a soft toothbrush and maintain good dental hygiene.’",
+          "‘If I become seizure-free, I can stop taking the medication on my own.’"
+        ],
+        correctIndex: 3,
+        rationale:
+          "Antiseizure medications should never be stopped abruptly without medical supervision due to risk of withdrawal seizures. Avoiding alcohol, not stopping suddenly, and good oral care are correct."
+      },
+      {
+        id: 46,
+        category: "PHARM",
+        stem:
+          "Which client statement about using a transdermal fentanyl patch indicates correct understanding?",
+        options: [
+          "‘I can cut the patch in half if my pain is mild.’",
+          "‘Heat packs over the patch will help it absorb faster.’",
+          "‘I will remove the old patch before applying a new one.’",
+          "‘I should change the patch every 8 hours.’"
+        ],
+        correctIndex: 2,
+        rationale:
+          "The old patch must be removed before placing a new one to avoid overdose. Patches should not be cut, and external heat can increase absorption dangerously. Fentanyl patches are usually changed every 72 hours, not 8."
+      },
+      {
+        id: 47,
+        category: "PHARM",
+        stem:
+          "A client receiving haloperidol develops muscle rigidity, high fever, and confusion. What is the nurse’s PRIORITY action?",
+        options: [
+          "Administer prescribed benztropine.",
+          "Notify the provider; suspect neuroleptic malignant syndrome.",
+          "Encourage oral fluids and rest.",
+          "Give PRN lorazepam for anxiety."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Muscle rigidity, hyperthermia, and mental status changes are classic for neuroleptic malignant syndrome, a medical emergency. The provider must be notified immediately, the drug stopped, and supportive care started. Benztropine treats extrapyramidal symptoms, not NMS."
+      },
+      {
+        id: 48,
+        category: "PHARM",
+        stem:
+          "Which teaching should the nurse include for a client prescribed rifampin for tuberculosis?",
+        options: [
+          "‘Your urine and tears may turn orange; this is expected.’",
+          "‘Stop the medication if your urine becomes discolored.’",
+          "‘You only need to take this medication for 2 weeks.’",
+          "‘This medication has no effect on other drugs you take.’"
+        ],
+        correctIndex: 0,
+        rationale:
+          "Rifampin commonly causes orange discoloration of body fluids, which is harmless. Therapy often lasts several months, and rifampin has many drug interactions (it induces hepatic enzymes). Stopping due to discoloration is incorrect."
+      },
+      {
+        id: 49,
+        category: "PHARM",
+        stem:
+          "A client with heart failure is prescribed spironolactone. Which food choice indicates a need for further teaching?",
+        options: [
+          "Fresh strawberries.",
+          "Baked chicken breast.",
+          "Bananas and orange juice at breakfast.",
+          "White rice and steamed vegetables."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Spironolactone is potassium-sparing; clients should avoid excessive high-potassium foods like bananas and orange juice. The other items are not particularly high in potassium."
+      },
+      {
+        id: 50,
+        category: "PHARM",
+        stem:
+          "The nurse is teaching a client with chronic pain about a long-acting opioid regimen. Which statement shows understanding?",
+        options: [
+          "‘I will take the long-acting pill at the same time every day, even if I feel okay.’",
+          "‘I will only take this medication when my pain reaches a 7 or higher.’",
+          "‘If I feel drowsy, I should double the dose to sleep better.’",
+          "‘I can crush the long-acting tablet if I have trouble swallowing.’"
+        ],
+        correctIndex: 0,
+        rationale:
+          "Long-acting opioids are taken on a fixed schedule to maintain baseline pain control, not just when pain is severe. Doses should not be doubled or crushed, as crushing alters release. Drowsiness should be reported."
+      },
+      // OB / MATERNAL (51–65)
+      {
+        id: 51,
+        category: "OB",
+        stem:
+          "The nurse is caring for a laboring client with an external fetal monitor. Which fetal heart rate pattern requires the MOST immediate intervention?",
+        options: [
+          "Baseline 140/min with moderate variability and occasional accelerations.",
+          "Recurrent late decelerations with each contraction.",
+          "Early decelerations mirroring the contractions.",
+          "Single variable deceleration that resolves quickly."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Recurrent late decelerations indicate uteroplacental insufficiency and fetal distress."
+      },
+      {
+        id: 52,
+        category: "OB",
+        stem:
+          "The membranes rupture spontaneously during active labor. What is the PRIORITY nursing action?",
+        options: [
+          "Assess the client’s temperature.",
+          "Check the color and odor of the fluid.",
+          "Assess the fetal heart rate.",
+          "Document the time of rupture."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Immediately after SROM, the nurse must assess FHR to detect cord prolapse or distress."
+      },
+      {
+        id: 53,
+        category: "OB",
+        stem:
+          "Which statement by a pregnant client at 20 weeks gestation indicates a need for further teaching?",
+        options: [
+          "‘I will avoid all alcohol during pregnancy.’",
+          "‘I will take 400–800 mcg of folic acid daily as prescribed.’",
+          "‘I should feel my baby move every few hours now.’",
+          "‘I can continue taking my ACE inhibitor during pregnancy.’"
+        ],
+        correctIndex: 3,
+        rationale:
+          "ACE inhibitors are contraindicated due to fetal renal damage risk."
+      },
+      {
+        id: 54,
+        category: "OB",
+        stem:
+          "A client at 32 weeks gestation reports a sudden severe headache and blurry vision. What should the nurse suspect?",
+        options: [
+          "Physiologic discomfort of late pregnancy.",
+          "Premature rupture of membranes.",
+          "Worsening preeclampsia.",
+          "Round ligament pain."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Severe headache + vision changes = preeclampsia warning signs requiring immediate evaluation."
+      },
+      {
+        id: 55,
+        category: "OB",
+        stem:
+          "Which postpartum finding requires IMMEDIATE intervention?",
+        options: [
+          "Fundus firm, midline.",
+          "Peripad saturated in 15 minutes with large clots.",
+          "Afterpains when breastfeeding.",
+          "Mild diaphoresis."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Saturating a peripad in <15 minutes indicates postpartum hemorrhage."
+      },
+      {
+        id: 56,
+        category: "OB",
+        stem:
+          "Two hours postpartum, a client becomes pale and dizzy; the uterus is boggy and bleeding is heavy. What is PRIORITY?",
+        options: [
+          "Notify the provider.",
+          "Increase IV fluids.",
+          "Massage the fundus.",
+          "Apply oxygen."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Fundal massage is FIRST to correct uterine atony, the most common cause of postpartum hemorrhage."
+      },
+      {
+        id: 57,
+        category: "OB",
+        stem:
+          "Which postpartum teaching statement indicates a need for further teaching?",
+        options: [
+          "‘I will call if I have foul-smelling lochia.’",
+          "‘Mild cramping while breastfeeding is normal.’",
+          "‘Nothing in the vagina for at least 4–6 weeks.’",
+          "‘I can resume heavy lifting as soon as I get home.’"
+        ],
+        correctIndex: 3,
+        rationale:
+          "Heavy lifting is restricted postpartum due to healing and hemorrhage risk."
+      },
+      {
+        id: 58,
+        category: "OB",
+        stem:
+          "A client receiving magnesium sulfate has RR of 10/min. What does the nurse do FIRST?",
+        options: [
+          "Continue magnesium and reassess in 30 minutes.",
+          "STOP magnesium infusion and notify the provider.",
+          "Loosen clothing and apply cool compresses.",
+          "Increase IV fluids."
+        ],
+        correctIndex: 1,
+        rationale:
+          "RR < 12/min = magnesium toxicity → STOP infusion and notify provider."
+      },
+      {
+        id: 59,
+        category: "OB",
+        stem:
+          "Which action prevents cold stress in a newborn under a radiant warmer?",
+        options: [
+          "Bathe immediately.",
+          "Keep the head covered with a cap.",
+          "Place near a window.",
+          "Encourage crying."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Newborns lose significant heat from the head; a cap prevents heat loss."
+      },
+      {
+        id: 60,
+        category: "OB",
+        stem:
+          "A laboring client reports sudden severe abdominal pain; fetal station suddenly rises. What is the PRIORITY?",
+        options: [
+          "Check for cervical dilation.",
+          "Apply O₂ and notify provider immediately.",
+          "Encourage a side-lying position.",
+          "Give analgesics."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Sudden pain + loss of fetal station = uterine rupture → emergency O₂ + call provider."
+      },
+      {
+        id: 61,
+        category: "OB",
+        stem:
+          "Which breastfeeding statement requires further teaching?",
+        options: [
+          "‘I should feed every 2–3 hours.’",
+          "‘Most of the areola should be in baby's mouth.’",
+          "‘If it hurts, I’ll stop breastfeeding for a few days.’",
+          "‘Several wet diapers a day means feeding is good.’"
+        ],
+        correctIndex: 2,
+        rationale:
+          "Stopping breastfeeding for days worsens latch issues; pain indicates improper latch."
+      },
+      {
+        id: 62,
+        category: "OB",
+        stem:
+          "Who is a good candidate for combined estrogen-progestin oral contraceptives postpartum?",
+        options: [
+          "Breastfeeding client 2 weeks postpartum.",
+          "Client 6 weeks postpartum with DVT history.",
+          "Smoker 8 weeks postpartum.",
+          "Healthy bottle-feeding client 8 weeks postpartum."
+        ],
+        correctIndex: 3,
+        rationale:
+          "Estrogen is contraindicated in breastfeeding, smokers >35, and DVT history."
+      },
+      {
+        id: 63,
+        category: "OB",
+        stem:
+          "Which newborn finding warrants immediate evaluation?",
+        options: [
+          "Acrocyanosis.",
+          "Respirations 70/min with nasal flaring.",
+          "Molding of the head.",
+          "Periodic breathing."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Tachypnea + flaring = respiratory distress."
+      },
+      {
+        id: 64,
+        category: "OB",
+        stem:
+          "Client with placenta previa at 32 weeks has painless bleeding. What is PRIORITY?",
+        options: [
+          "Perform vaginal exam.",
+          "Place on bed rest with pelvic rest.",
+          "Encourage walking.",
+          "Start oxytocin."
+        ],
+        correctIndex: 1,
+        rationale:
+          "NEVER perform vaginal exams in placenta previa; bed rest and pelvic rest required."
+      },
+      {
+        id: 65,
+        category: "OB",
+        stem:
+          "Which postpartum day-3 finding is abnormal?",
+        options: [
+          "Decreasing lochia rubra.",
+          "Fundus 3 cm below umbilicus.",
+          "Mild tearfulness.",
+          "Warm, swollen unilateral leg."
+        ],
+        correctIndex: 3,
+        rationale:
+          "Unilateral swelling = possible DVT."
+      },
+
+      // PEDS / PSYCH (66–80)
+      {
+        id: 66,
+        category: "PEDS",
+        stem:
+          "Suspected epiglottitis in a 4-year-old. What is PRIORITY?",
+        options: [
+          "Throat culture swab.",
+          "Keep child calm; avoid airway manipulation.",
+          "Lay child flat.",
+          "Give oral fluids."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Airway manipulation → laryngospasm; keep child calm."
+      },
+      {
+        id: 67,
+        category: "PEDS",
+        stem:
+          "Which is FIRST home safety instruction for a toddler?",
+        options: [
+          "Lock medications/cleaners.",
+          "Teach polite phone etiquette.",
+          "Allow outdoor unsupervised play.",
+          "Let child help cook."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Toddlers = highest poisoning risk."
+      },
+      {
+        id: 68,
+        category: "PEDS",
+        stem:
+          "Introducing solids at 6 months: appropriate teaching?",
+        options: [
+          "Introduce one new food at a time.",
+          "Honey is safe.",
+          "Cow's milk can replace formula.",
+          "Nuts help teething."
+        ],
+        correctIndex: 0,
+        rationale:
+          "One new food at a time to identify allergies."
+      },
+      {
+        id: 69,
+        category: "PEDS",
+        stem:
+          "Which 10-month-old finding is concerning?",
+        options: [
+          "Crawling.",
+          "Pincer grasp.",
+          "No clear words yet.",
+          "No eye contact or response to name."
+        ],
+        correctIndex: 3,
+        rationale:
+          "Lack of response to name may indicate autism."
+      },
+      {
+        id: 70,
+        category: "PEDS",
+        stem:
+          "Priority in sickle cell vaso-occlusive crisis?",
+        options: [
+          "Cold compresses.",
+          "Fluids + opioids.",
+          "Restrict fluids.",
+          "Vigorous activity."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Hydration + pain control = key."
+      },
+      {
+        id: 71,
+        category: "PEDS",
+        stem:
+          "Asthma attack worsening → breath sounds suddenly absent. What is this?",
+        options: [
+          "Expected improvement.",
+          "Status asthmaticus — emergency.",
+          "Mild exacerbation.",
+          "Anxiety reaction."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Silent chest = impending respiratory failure."
+      },
+      {
+        id: 72,
+        category: "PSYCH",
+        stem:
+          "Client says: ‘Everyone would be better off if I weren’t here.’ Best response?",
+        options: [
+          "‘Don’t feel that way.’",
+          "‘Are you thinking of hurting yourself?’",
+          "‘You just need rest.’",
+          "‘Ignore those thoughts.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Direct suicide assessment is essential."
+      },
+      {
+        id: 73,
+        category: "PSYCH",
+        stem:
+          "Schizophrenia client hears voices saying: ‘You are worthless.’ Best response?",
+        options: [
+          "‘Those voices aren’t real.’",
+          "‘What are the voices saying now?’",
+          "‘Why do you listen?’",
+          "‘Focus on reality.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Explore hallucination content to assess risk."
+      },
+      {
+        id: 74,
+        category: "PSYCH",
+        stem:
+          "During a panic attack, what is FIRST?",
+        options: [
+          "Teach breathing exercises.",
+          "Stay with client; calm presence.",
+          "Ask for trigger explanation.",
+          "Give treatment plan details."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Stay physically present and reduce anxiety."
+      },
+      {
+        id: 75,
+        category: "PSYCH",
+        stem:
+          "Which tray is best for severe depression?",
+        options: [
+          "Steak dinner.",
+          "Soup, crackers, cheese, milkshake.",
+          "Fish with bones.",
+          "Meal requiring cutting utensils."
+        ],
+        correctIndex: 1,
+        rationale:
+          "High-calorie, easy-to-eat foods."
+      },
+      {
+        id: 76,
+        category: "PSYCH",
+        stem:
+          "Anorexia client eats 25% of meals x2 days. Priority?",
+        options: [
+          "Allow skipping meals.",
+          "Schedule family meeting.",
+          "Notify provider—anticipate nutritional support.",
+          "Increase privileges."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Medical stabilization before psychotherapy."
+      },
+      {
+        id: 77,
+        category: "PSYCH",
+        stem:
+          "Dementia client wants to ‘go home to my children.’ Best response?",
+        options: [
+          "‘You can’t leave.’",
+          "‘Tell me about them while we walk together.’",
+          "‘They aren’t coming.’",
+          "‘Stay in your room.’"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Validation + redirection."
+      },
+      {
+        id: 78,
+        category: "PEDS",
+        stem:
+          "Which pre-tonsillectomy finding must be reported?",
+        options: [
+          "Loose tooth.",
+          "Past sore throats.",
+          "Night fear.",
+          "Sibling allergies."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Loose teeth = aspiration risk under anesthesia."
+      },
+      {
+        id: 79,
+        category: "PEDS",
+        stem:
+          "Best home treatment for conscious hypoglycemic child?",
+        options: [
+          "4 oz juice.",
+          "Wait 1 hour to recheck.",
+          "Large candy bar.",
+          "Juice in unconscious child’s mouth."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Fast-acting carb; recheck in 15 min."
+      },
+      {
+        id: 80,
+        category: "PSYCH",
+        stem:
+          "Initial intervention for OCD handwashing rituals?",
+        options: [
+          "Forbid rituals.",
+          "Allow ritual time but gradually limit.",
+          "Ignore rituals.",
+          "Tell client they're irrational."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Gradual limit-setting reduces anxiety."
+      },
+
+      // INFECTION / MISC (81–100)
+      {
+        id: 81,
+        category: "INFECTION",
+        stem:
+          "Best home hygiene for C. diff?",
+        options: [
+          "Wash hands with soap and water.",
+          "Use alcohol sanitizer only.",
+          "Stop antibiotics early.",
+          "Avoid all family contact."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Spores resist alcohol; soap/water required."
+      },
+      {
+        id: 82,
+        category: "INFECTION",
+        stem:
+          "Which client requires airborne precautions?",
+        options: [
+          "Influenza.",
+          "Varicella.",
+          "MRSA wound.",
+          "C. diff."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Varicella = airborne."
+      },
+      {
+        id: 83,
+        category: "INFECTION",
+        stem:
+          "Most effective CAUTI prevention?",
+        options: [
+          "Irrigate catheter routinely.",
+          "Keep drainage bag below bladder.",
+          "Change catheter daily.",
+          "Clamp tubing when ambulating."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Prevent backflow → reduces infection."
+      },
+      {
+        id: 84,
+        category: "INFECTION",
+        stem:
+          "Which phone message is highest priority?",
+        options: [
+          "Pneumonia client w/ mild diarrhea.",
+          "HIV client w/ fever 38.8°C.",
+          "UTI client pain improved.",
+          "Ringworm school question."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Immunocompromised + fever = emergency."
+      },
+      {
+        id: 85,
+        category: "MISC",
+        stem:
+          "Which COPD finding shows effective therapy?",
+        options: [
+          "Sat 92% with ↓ SOB.",
+          "RR 8/min, drowsy.",
+          "Pink frothy sputum.",
+          "Accessory muscle use."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Improved oxygenation + symptoms."
+      },
+      {
+        id: 86,
+        category: "MISC",
+        stem:
+          "Heart failure teaching: what to report?",
+        options: [
+          "Daily varied weigh-ins.",
+          "Weight gain >2–3 lbs/day.",
+          "Switching scales.",
+          "Wearing heavy clothes."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Rapid gain = fluid overload."
+      },
+      {
+        id: 87,
+        category: "MISC",
+        stem:
+          "Best CKD meal?",
+        options: [
+          "Chicken, rice, green beans, apple.",
+          "Salmon, baked potato skin, OJ.",
+          "Ham + cheese + pickles.",
+          "Yogurt, bananas, nuts."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Low potassium, low phosphorus."
+      },
+      {
+        id: 88,
+        category: "MISC",
+        stem:
+          "Correct incentive spirometer use?",
+        options: [
+          "Exhale forcefully.",
+          "Slow deep inhale, hold breath.",
+          "Rapid breathing for 1 min.",
+          "Once per day."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Promotes lung expansion."
+      },
+      {
+        id: 89,
+        category: "MISC",
+        stem:
+          "Correct cane technique?",
+        options: [
+          "Hold cane on weak side.",
+          "Move cane + weak leg together.",
+          "Cane → weak leg → strong leg.",
+          "Keep cane behind body."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Standard gait pattern for unilateral weakness."
+      },
+      {
+        id: 90,
+        category: "INFECTION",
+        stem:
+          "The nurse is preparing to insert a peripheral IV catheter. Which step is MOST important to prevent catheter-related bloodstream infection?",
+        options: [
+          "Shave the hair at the insertion site.",
+          "Use clean gloves instead of sterile gloves.",
+          "Perform hand hygiene and scrub the insertion site with chlorhexidine.",
+          "Apply antibiotic ointment after insertion."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Hand hygiene and proper skin antisepsis with chlorhexidine are critical to reduce bloodstream infection risk. Shaving is unnecessary, clean technique is less ideal, and routine antibiotic ointment is not recommended."
+      },
+      {
+        id: 91,
+        category: "MISC",
+        stem:
+          "A client with chronic pain uses a patient-controlled analgesia (PCA) pump. Which statement indicates the client needs further teaching?",
+        options: [
+          "“I should press the button when I start to feel the pain increasing.”",
+          "“My family should press the button for me when I am sleeping.”",
+          "“There is a maximum dose limit programmed into the pump.”",
+          "“The nurse will monitor my breathing while I am receiving this medication.”"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Only the client should press the PCA button to avoid oversedation and respiratory depression. Anticipatory dosing, built-in dose limits, and nursing monitoring are correct statements."
+      },
+      {
+        id: 92,
+        category: "MISC",
+        stem:
+          "The nurse is teaching a client newly diagnosed with hypertension about lifestyle changes. Which client statement shows understanding?",
+        options: [
+          "“I will limit my sodium intake and avoid adding salt to foods.”",
+          "“I can stop my medication once my blood pressure is normal for a week.”",
+          "“Smoking does not affect my blood pressure, so I don’t need to quit.”",
+          "“I should drink several alcoholic beverages daily to relax.”"
+        ],
+        correctIndex: 0,
+        rationale:
+          "Reducing sodium intake is an important lifestyle change for hypertension. Antihypertensives are usually long-term, smoking cessation is recommended, and alcohol should be limited."
+      },
+      {
+        id: 93,
+        category: "INFECTION",
+        stem:
+          "The nurse is reviewing vaccination records for an adult client. Which vaccine should be administered EVERY year?",
+        options: [
+          "Tetanus, diphtheria, and pertussis (Tdap).",
+          "Pneumococcal vaccine.",
+          "Influenza vaccine.",
+          "Herpes zoster (shingles) vaccine."
+        ],
+        correctIndex: 2,
+        rationale:
+          "The influenza vaccine is recommended annually. Tdap is given once with Td boosters every 10 years; pneumococcal and shingles vaccines are given once or in limited series for most adults."
+      },
+      {
+        id: 94,
+        category: "MISC",
+        stem:
+          "A client reports new onset of calf pain and swelling after a long airplane flight. What is the PRIORITY action?",
+        options: [
+          "Elevate the leg and apply a warm compress.",
+          "Massage the calf to improve circulation.",
+          "Assess peripheral pulses and notify the provider of possible deep vein thrombosis (DVT).",
+          "Encourage the client to ambulate vigorously."
+        ],
+        correctIndex: 2,
+        rationale:
+          "Calf pain and swelling after immobility suggest DVT. The nurse should assess circulation, limit activity, and notify the provider. Ambulation and massage may dislodge a clot and cause pulmonary embolism."
+      },
+      {
+        id: 95,
+        category: "MISC",
+        stem:
+          "The nurse is caring for an older adult at risk for falls. Which intervention is MOST effective for fall prevention?",
+        options: [
+          "Keep the lights off at night so the client sleeps better.",
+          "Place frequently used items within easy reach.",
+          "Raise all side rails at all times.",
+          "Remove the call light to prevent confusion."
+        ],
+        correctIndex: 1,
+        rationale:
+          "Keeping items within reach and ensuring a clear, accessible environment reduces fall risk. Good lighting, appropriate side rail use, and access to a call light are important; removing these increases risk."
+      },
+      {
+        id: 96,
+        category: "MISC",
+        stem:
+          "The nurse is teaching a client with chronic obstructive pulmonary disease (COPD) about energy conservation. Which statement indicates understanding?",
+        options: [
+          "“I will schedule activities right after meals.”",
+          "“I will sit in a chair while showering.”",
+          "“I should hold my breath during activities.”",
+          "“I should hurry to get tasks done quickly.”"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Sitting while performing tasks like showering helps conserve energy. Activities should not be clustered around meals, breath-holding is harmful, and rushing increases oxygen demand."
+      },
+      {
+        id: 97,
+        category: "INFECTION",
+        stem:
+          "The nurse is caring for a client with suspected meningococcal meningitis. Which intervention is PRIORITY on admission?",
+        options: [
+          "Place the client in droplet precautions.",
+          "Start range-of-motion exercises.",
+          "Encourage visitors to sit close to the client’s face.",
+          "Schedule the client for a chest x-ray."
+        ],
+        correctIndex: 0,
+        rationale:
+          "Meningococcal meningitis is spread by droplets; droplet precautions (mask, private room) must be initiated immediately to prevent transmission. Other interventions are lower priority initially."
+      },
+      {
+        id: 98,
+        category: "MISC",
+        stem:
+          "The nurse teaches a client with osteoporosis about home safety. Which instruction is MOST important?",
+        options: [
+          "“Use throw rugs to prevent cold floors.”",
+          "“Install grab bars in the bathroom and use non-slip mats.”",
+          "“Store frequently used items on high shelves.”",
+          "“Walk in socks only to avoid tracking dirt.”"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Clients with osteoporosis are at high risk for fractures from falls; grab bars and non-slip mats are key safety interventions. Throw rugs, high shelves, and walking in socks increase fall risk."
+      },
+      {
+        id: 99,
+        category: "MISC",
+        stem:
+          "The nurse assesses a client’s understanding of advance directives. Which statement shows correct understanding?",
+        options: [
+          "“Advance directives only apply if I am fully conscious.”",
+          "“I can change my advance directives later if I wish.”",
+          "“My family, not I, decides what goes into the document.”",
+          "“Once written, the document can never be revoked.”"
+        ],
+        correctIndex: 1,
+        rationale:
+          "Clients can revise or revoke advance directives at any time while competent. They guide care when the client cannot speak for themselves. Family may be involved but the client’s wishes are primary."
+      },
+      {
+        id: 100,
+        category: "MISC",
+        stem:
+          "The nurse is teaching a client about sleep hygiene. Which recommendation is MOST appropriate?",
+        options: [
+          "“Use your bed only for sleep and intimacy, not for watching TV.”",
+          "“Take long daytime naps to catch up on missed sleep.”",
+          "“Drink caffeinated beverages in the evening to stay relaxed.”",
+          "“Exercise vigorously right before bedtime.”"
+        ],
+        correctIndex: 0,
+        rationale:
+          "Using the bed only for sleep and intimacy helps associate it with rest and improves sleep hygiene. Long naps, caffeine in the evening, and heavy exercise at bedtime can worsen insomnia."
+      }
+    ];
+
+    // ----------------- STATE -----------------
+    let currentIndex = 0;
+    let selectedAnswers = new Array(TOTAL_QUESTIONS).fill(null);
+    let timerRemaining = TOTAL_TIME_SECONDS;
+    let timerId = null;
+
+    // ----------------- DOM HOOKS -----------------
+    const startScreen = document.getElementById("start-screen");
+    const quizScreen = document.getElementById("quiz-screen");
+    const resultsScreen = document.getElementById("results-screen");
+
+    const howPanel = document.getElementById("how-panel");
+    const beginBtn = document.getElementById("begin-btn");
+    const howBtn = document.getElementById("how-btn");
+
+    const quizStudentName = document.getElementById("quiz-student-name");
+    const resultStudentName = document.getElementById("result-student-name");
+    const nameInput = document.getElementById("student-name");
+
+    const questionNumberEl = document.getElementById("question-number");
+    const questionCategoryEl = document.getElementById("question-category");
+    const questionStemEl = document.getElementById("question-stem");
+    const answersContainer = document.getElementById("answers-container");
+    const questionProgressEl = document.getElementById("question-progress");
+
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const submitBtn = document.getElementById("submit-btn");
+
+    const timerDisplay = document.getElementById("timer-display");
+
+    const scoreMainEl = document.getElementById("score-main");
+    const scorePercentEl = document.getElementById("score-percent");
+    const timeUsedNoteEl = document.getElementById("time-used-note");
+    const categoryTableBody = document.querySelector("#category-table tbody");
+
+    const reviewBtn = document.getElementById("review-btn");
+    const printBtn = document.getElementById("print-btn");
+
+    // ----------------- HELPERS -----------------
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+    }
+
+    function updateTimerDisplay() {
+      timerDisplay.textContent = formatTime(timerRemaining);
+    }
+
+    function startTimer() {
+      updateTimerDisplay();
+      timerId = setInterval(() => {
+        timerRemaining--;
+        if (timerRemaining <= 0) {
+          timerRemaining = 0;
+          updateTimerDisplay();
+          clearInterval(timerId);
+          handleExamEnd(true);
+        } else {
+          updateTimerDisplay();
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function countAnswered() {
+      return selectedAnswers.filter((v) => v !== null).length;
+    }
+
+    function updateProgressText() {
+      questionProgressEl.textContent = `Answered ${countAnswered()} / ${TOTAL_QUESTIONS}`;
+    }
+
+    function renderQuestion() {
+      const q = questions[currentIndex];
+
+      questionNumberEl.textContent = `Question ${currentIndex + 1} of ${TOTAL_QUESTIONS}`;
+      questionCategoryEl.textContent = q.category;
+      questionStemEl.textContent = q.stem;
+
+      answersContainer.innerHTML = "";
+      q.options.forEach((opt, idx) => {
+        const wrapper = document.createElement("label");
+        wrapper.className = "answer-option";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "answer";
+        radio.value = idx;
+
+        if (selectedAnswers[currentIndex] === idx) {
+          radio.checked = true;
+        }
+
+        radio.addEventListener("change", () => {
+          selectedAnswers[currentIndex] = idx;
+          updateProgressText();
+        });
+
+        const labelSpan = document.createElement("div");
+        labelSpan.className = "option-label";
+        labelSpan.textContent = String.fromCharCode(65 + idx); // A-D
+
+        const textSpan = document.createElement("div");
+        textSpan.className = "option-text";
+        textSpan.textContent = opt;
+
+        wrapper.appendChild(radio);
+        wrapper.appendChild(labelSpan);
+        wrapper.appendChild(textSpan);
+
+        answersContainer.appendChild(wrapper);
+      });
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === TOTAL_QUESTIONS - 1;
+
+      updateProgressText();
+    }
+
+    function showScreen(screen) {
+      startScreen.classList.add("hidden");
+      quizScreen.classList.add("hidden");
+      resultsScreen.classList.add("hidden");
+
+      screen.classList.remove("hidden");
+    }
+
+    function handleExamStart() {
+      const name = nameInput.value.trim() || "NCLEX Candidate";
+      quizStudentName.textContent = `Candidate: ${name}`;
+      resultStudentName.textContent = name;
+
+      currentIndex = 0;
+      selectedAnswers = new Array(TOTAL_QUESTIONS).fill(null);
+      timerRemaining = TOTAL_TIME_SECONDS;
+
+      showScreen(quizScreen);
+      renderQuestion();
+      startTimer();
+    }
+
+    function buildCategoryStats() {
+      const stats = {};
+      questions.forEach((q, idx) => {
+        if (!stats[q.category]) {
+          stats[q.category] = { correct: 0, total: 0 };
+        }
+        stats[q.category].total += 1;
+        if (selectedAnswers[idx] === q.correctIndex) {
+          stats[q.category].correct += 1;
+        }
+      });
+      return stats;
+    }
+
+    function handleExamEnd(timeExpired = false) {
+      stopTimer();
+
+      const total = questions.length;
+      let correct = 0;
+      questions.forEach((q, idx) => {
+        if (selectedAnswers[idx] === q.correctIndex) correct++;
+      });
+
+      scoreMainEl.textContent = `${correct} / ${total}`;
+      const percent = Math.round((correct / total) * 100);
+      scorePercentEl.textContent = `${percent}%`;
+
+      const timeUsed = TOTAL_TIME_SECONDS - timerRemaining;
+      const minutesUsed = Math.floor(timeUsed / 60);
+      const secondsUsed = timeUsed % 60;
+      const timeNote =
+        timeUsed <= 0
+          ? "You ended the exam immediately."
+          : `You used ${minutesUsed} min ${secondsUsed} sec of the available ${TOTAL_TIME_MINUTES} minutes.`;
+      timeUsedNoteEl.textContent = timeExpired
+        ? `${timeNote} Time expired and your answers were locked.`
+        : timeNote;
+
+      const stats = buildCategoryStats();
+      categoryTableBody.innerHTML = "";
+      Object.keys(stats).forEach((cat) => {
+        const { correct, total } = stats[cat];
+        const pct = total ? Math.round((correct / total) * 100) : 0;
+        const tr = document.createElement("tr");
+        const tdCat = document.createElement("td");
+        const tdCorrect = document.createElement("td");
+        const tdTotal = document.createElement("td");
+        const tdPct = document.createElement("td");
+
+        tdCat.textContent = cat;
+        tdCorrect.textContent = correct;
+        tdTotal.textContent = total;
+        tdPct.textContent = `${pct}%`;
+        if (pct >= 80) tdPct.className = "tag-good";
+        else if (pct < 60) tdPct.className = "tag-weak";
+
+        tr.appendChild(tdCat);
+        tr.appendChild(tdCorrect);
+        tr.appendChild(tdTotal);
+        tr.appendChild(tdPct);
+        categoryTableBody.appendChild(tr);
+      });
+
+      showScreen(resultsScreen);
+    }
+
+    function handleSubmitClick() {
+      const unanswered = selectedAnswers.filter((v) => v === null).length;
+      let msg = "Are you sure you want to submit and lock your exam?";
+      if (unanswered > 0) {
+        msg += `\n\nYou have ${unanswered} unanswered question(s). They will be counted as incorrect.`;
+      }
+      if (confirm(msg)) {
+        handleExamEnd(false);
+      }
+    }
+
+    function openReviewWindow() {
+      const name = resultStudentName.textContent || "Candidate";
+      const win = window.open("", "_blank");
+      if (!win) return;
+
+      let html = `
+        <html>
+        <head>
+          <meta charset="UTF-8" />
+          <title>NCLEX Review – Day 0 Post-Test</title>
+          <style>
+            body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 24px; line-height: 1.5; color: #111827; }
+            h1 { font-size: 24px; margin-bottom: 8px; }
+            h2 { font-size: 18px; margin-top: 24px; }
+            .meta { color: #4b5563; margin-bottom: 16px; font-size: 14px; }
+            .q-block { margin-bottom: 18px; border-bottom: 1px solid #e5e7eb; padding-bottom: 12px; }
+            .q-title { font-weight: 600; margin-bottom: 4px; }
+            .category { font-size: 12px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.12em; }
+            .correct { color: #16a34a; font-weight: 600; }
+            .incorrect { color: #b91c1c; font-weight: 600; }
+            .rationale { margin-top: 4px; font-size: 14px; color: #374151; }
+          </style>
+        </head>
+        <body>
+          <h1>Dr. Modali Learning Labs – Day 0 Post-Test Review</h1>
+          <div class="meta">Candidate: ${name}<br/>Review of all ${TOTAL_QUESTIONS} questions with your answer, the correct answer, and rationale.</div>
+      `;
+
+      questions.forEach((q, idx) => {
+        const userIdx = selectedAnswers[idx];
+        const correctIdx = q.correctIndex;
+        const userLetter = userIdx !== null ? String.fromCharCode(65 + userIdx) : "—";
+        const correctLetter = String.fromCharCode(65 + correctIdx);
+        const correctness =
+          userIdx === null
+            ? `<span class="incorrect">Unanswered</span>`
+            : userIdx === correctIdx
+            ? `<span class="correct">Correct</span>`
+            : `<span class="incorrect">Incorrect</span>`;
+
+        html += `
+          <div class="q-block">
+            <div class="category">${q.category}</div>
+            <div class="q-title">Question ${idx + 1}</div>
+            <div>${q.stem}</div>
+            <ul>
+        `;
+
+        q.options.forEach((opt, i) => {
+          const letter = String.fromCharCode(65 + i);
+          html += `<li>${letter}. ${opt}</li>`;
+        });
+
+        html += `
+            </ul>
+            <div>Your answer: ${userLetter} &nbsp;&nbsp; Correct answer: ${correctLetter} – ${correctness}</div>
+            <div class="rationale"><strong>Rationale:</strong> ${q.rationale}</div>
+          </div>
+        `;
+      });
+
+      html += `
+        </body>
+        </html>
+      `;
+
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+    }
+
+    // ----------------- EVENT LISTENERS -----------------
+    beginBtn.addEventListener("click", () => {
+      handleExamStart();
+    });
+
+    howBtn.addEventListener("click", () => {
+      howPanel.classList.toggle("hidden");
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < TOTAL_QUESTIONS - 1) {
+        currentIndex++;
+        renderQuestion();
+      }
+    });
+
+    submitBtn.addEventListener("click", () => {
+      handleSubmitClick();
+    });
+
+    reviewBtn.addEventListener("click", () => {
+      openReviewWindow();
+    });
+
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
